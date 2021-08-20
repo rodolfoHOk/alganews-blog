@@ -1,5 +1,7 @@
-import { Post, getEditorDescription } from "rodolfohiok-sdk";
+import { Post } from "rodolfohiok-sdk";
 import styled from "styled-components"
+import Avatar from "./Avatar";
+
 
 interface FeaturedPostProps {
   postSummary: Post.Summary;
@@ -55,14 +57,6 @@ const Tag = styled.li`
 const Editor = styled.div`
   display: flex;
   gap: 16px;
-`;
-
-const Avatar = styled.img`
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 20px;
-  box-shadow: 0 0 0 4px ${p => p.theme.primaryForeground};
 `;
 
 const EditorDescription = styled.div`
