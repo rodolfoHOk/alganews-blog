@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { transparentize } from 'polished';
 import { FOOTER_HEIGHT } from "../_constants";
+import Logo from "./Logo";
 
 export default function Footer() {
   return <Wrapper>
     <Container>
-      <span>logo</span>
+      <Logo />
       <span>créditos</span>
     </Container>
   </Wrapper>
