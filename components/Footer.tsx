@@ -1,31 +1,32 @@
 import styled from "styled-components";
 import { transparentize } from 'polished';
-import { HEADER_HEIGHT } from "../_constants";
+import { FOOTER_HEIGHT } from "../_constants";
 
-export default function Header() {
+export default function Footer() {
   return <Wrapper>
     <Container>
       <span>logo</span>
-      <span>navbar</span>
+      <span>créditos</span>
     </Container>
   </Wrapper>
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.footer`
   background-color: ${p => p.theme.activeElementBackground};
   color: ${p => p.theme.activeElementForeground};
-  box-shadow: 0 3px 10px ${p => transparentize(0.9, p.theme.pageForeground)};
 
   width: 100%;
-  height: ${HEADER_HEIGHT}px;
+  height: ${FOOTER_HEIGHT}px;
 `;
 
 const Container = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  gap: 16px;
 
-  max-width: 848px;
+  max-width: 346px;
   height: 100%;
   margin: auto; 
 `;
