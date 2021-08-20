@@ -1,3 +1,7 @@
+## BackEnd Local
+/repositorio/Programacao/cursos/algaworks/ERJS-EspecialistaReactJS/alganews-infra/
+docker-compose up -d
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
