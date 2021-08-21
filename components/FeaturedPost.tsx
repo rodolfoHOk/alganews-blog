@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { transparentize } from "polished";
 import { Post } from "rodolfohiok-sdk";
 import styled from "styled-components"
 import Avatar from "./Avatar";
@@ -8,25 +10,30 @@ interface FeaturedPostProps {
 }
 
 export default function FeaturedPost(props: FeaturedPostProps) {
-  return <Wrapper>
-    <BgImage bg={props.postSummary.imageUrls.medium}/>
-    <Content>
-      <Tags>
-        {props.postSummary.tags.map(tag => <Tag key={tag}>{tag}</Tag>)}
-      </Tags>
-      <Editor>
-        <Avatar src={props.postSummary.editor.avatarUrls.small}/>
-        <EditorDescription>
-          <EditorName>por {props.postSummary.editor.name}</EditorName>
-          <PostDate>{props.postSummary.createdAt}</PostDate>
-        </EditorDescription>
-      </Editor>
-      <Title>{props.postSummary.title}</Title>
-    </Content>
-  </Wrapper>
+  const { id, slug } = props.postSummary;
+  return (
+    <Link href={`/posts/${id}/${slug}`} passHref>
+      <Wrapper>
+        <BgImage bg={props.postSummary.imageUrls.medium}/>
+        <Content>
+          <Tags>
+            {props.postSummary.tags.map(tag => <Tag key={tag}>{tag}</Tag>)}
+          </Tags>
+          <Editor>
+            <Avatar src={props.postSummary.editor.avatarUrls.small}/>
+            <EditorDescription>
+              <EditorName>por {props.postSummary.editor.name}</EditorName>
+              <PostDate>{props.postSummary.createdAt}</PostDate>
+            </EditorDescription>
+          </Editor>
+          <Title>{props.postSummary.title}</Title>
+        </Content>
+      </Wrapper>
+    </Link>
+  );
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.a`
   position: relative;
 
   display: flex;
@@ -40,7 +47,17 @@ const Wrapper = styled.div`
   min-height: 256px;
   padding: 32px;
 
+  text-decoration: none;
+
   overflow: hidden;
+
+  transition: box-shadow 0.25s ease;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px ${p => transparentize(0.7, p.theme.primaryBackground)};
+  }
 `;
 
 const BgImage = styled.div<{ bg: string }>`
