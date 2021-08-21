@@ -3,7 +3,8 @@ module.exports = {
   reactStrictMode: true,
   images: {
     domains: [
-      'storage.googleapis.com'
+      'storage.googleapis.com',
+      'localhost'
     ]
   }
 }

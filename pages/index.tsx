@@ -24,42 +24,38 @@ const Home: NextPage = () => {
 
         <FeaturedPost postSummary={
           {
-            id: 42,
-            slug: "como-fazer-x-coisas-com-react-js",
-            title: "Como fazer X coisas com React.js",
-            imageUrls: {
-              default:
-                "https://storage.googleapis.com/alganews-files/posts/avatar-joao.jpeg",
-              small:
-                "https://storage.googleapis.com/alganews-files/posts/avatar-joao-small.jpeg",
-              medium:
-                "https://storage.googleapis.com/alganews-files/posts/avatar-joao-medium.jpeg",
-              large:
-                "https://storage.googleapis.com/alganews-files/posts/avatar-joao-large.jpeg",
+            "id": 1,
+            "title": "Você sabe como é trabalhar em uma startup?",
+            "slug": "voce-sabe-como-e-trabalhar-em-uma-startup",
+            "imageUrls": {
+              "small": "http://localhost:8080/downloads/posts/small/voce-sabe-como-e-trabalhar-em-uma-startup.jpg",
+              "medium": "http://localhost:8080/downloads/posts/medium/voce-sabe-como-e-trabalhar-em-uma-startup.jpg",
+              "large": "http://localhost:8080/downloads/posts/large/voce-sabe-como-e-trabalhar-em-uma-startup.jpg",
+              "default": "http://localhost:8080/downloads/posts/voce-sabe-como-e-trabalhar-em-uma-startup.jpg"
             },
-            editor: {
-              id: 29,
-              name: "Daniel Bonifacio",
-              avatarUrls: {
-                default:
-                  "https://storage.googleapis.com/alganews-files/posts/avatar-joao.jpeg",
-                small:
-                  "https://storage.googleapis.com/alganews-files/posts/avatar-joao-small.jpeg",
-                medium:
-                  "https://storage.googleapis.com/alganews-files/posts/avatar-joao-medium.jpeg",
-                large:
-                  "https://storage.googleapis.com/alganews-files/posts/avatar-joao-large.jpeg",
+            "published": true,
+            "tags": [
+              "Java",
+              "ReactJS",
+              "Javascript"
+            ],
+            "createdAt": "2021-08-19T23:51:29Z",
+            "updatedAt": "2021-08-19T23:51:29Z",
+            "canBePublished": false,
+            "canBeUnpublished": false,
+            "canBeDeleted": false,
+            "canBeEdited": false,
+            "editor": {
+              "id": 6,
+              "name": "Débora Mendonça",
+              "avatarUrls": {
+                "small": "http://localhost:8080/downloads/photos/small/avatar-debora.jpeg",
+                "medium": "http://localhost:8080/downloads/photos/medium/avatar-debora.jpeg",
+                "large": "http://localhost:8080/downloads/photos/large/avatar-debora.jpeg",
+                "default": "http://localhost:8080/downloads/photos/avatar-debora.jpeg"
               },
-              createdAt: "2017-03-04T00:12:45Z",
-            },
-            createdAt: "2020-12-04T00:12:45-03:00",
-            updatedAt: "2020-12-05T00:12:45-03:00",
-            published: true,
-            tags: ["JavaScript", "react"],
-            canBePublished: true,
-            canBeUnpublished: true,
-            canBeDeleted: true,
-            canBeEdited: true,
+              "createdAt": "2021-02-20T23:51:29Z"
+            }
           }
         } />
 
