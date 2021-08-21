@@ -1,8 +1,9 @@
-import type { GetServerSideProps, GetServerSidePropsContext, NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import { Post, PostService } from 'rodolfohiok-sdk';
 import FeaturedPost from '../components/FeaturedPost';
 import { ServerResponse } from 'http';
+import PostCard from '../components/PostCard';
 
 interface HomeProps {
   posts?: Post.Paginated;
@@ -19,8 +20,14 @@ const Home: NextPage<HomeProps> = (props: HomeProps) => {
       </Head>
 
       { 
-        posts?.content &&
+        posts?.content?.length &&
         <FeaturedPost postSummary={posts.content[0]} />
+      }
+
+      {
+        posts?.content?.slice(1).map(post => (
+          <PostCard key={post.id} post={post}/>
+        ))
       }
 
     </div>
