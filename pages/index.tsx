@@ -6,6 +6,8 @@ import { ServerResponse } from 'http';
 import PostCard from '../components/PostCard';
 import PostsGrid from '../components/PostsGrid';
 import PageGrid from '../components/PageGrid';
+import ReactPaginate from 'react-paginate';
+import Router from 'next/router';
 
 interface HomeProps {
   posts?: Post.Paginated;
@@ -33,6 +35,18 @@ const Home: NextPage<HomeProps> = (props: HomeProps) => {
           ))
         }
       </PostsGrid>
+
+      <ReactPaginate 
+        pageCount={posts?.totalPages || 0}
+        marginPagesDisplayed={0}
+        pageRangeDisplayed={3}
+        previousLabel={'<'}
+        nextLabel={'>'}
+        hrefBuilder={page => `/?page=${page}`}
+        onPageChange={page => {
+          Router.push(`/?page=${page.selected + 1}`);
+        }}
+      />
     </PageGrid>
   )
 }
