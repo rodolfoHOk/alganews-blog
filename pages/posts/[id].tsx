@@ -1,6 +1,8 @@
 import { GetServerSideProps } from "next";
 import { ParsedUrlQuery } from 'querystring';
 import { Post, PostService } from "rodolfohiok-sdk";
+import CustomError from "rodolfohiok-sdk/dist/CustomError";
+import { ResourceNotFoundError, InvalidDataError } from "rodolfohiok-sdk/dist/errors";
 
 interface PostProps extends NextPageProps{
   post?: Post.Detailed;
@@ -32,7 +34,14 @@ export const getServerSideProps: GetServerSideProps<PostProps, Params> = async (
       }
     };
   } catch (error) {
-    console.log(error);
+    if (error instanceof CustomError)
+      console.log('Error: CustomError');
+    if (error instanceof ResourceNotFoundError) {
+      console.log('Error: ResourceNotFoundError');
+      return { notFound: true };
+    }
+    if (error instanceof InvalidDataError)
+      console.log('Error: InvalidDataError');
     return {
       props : {
         error: {
