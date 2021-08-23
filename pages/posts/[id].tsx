@@ -4,9 +4,17 @@ import { Post, PostService } from "rodolfohiok-sdk";
 
 interface PostProps {
   post?: Post.Detailed;
+  error?: {
+    message: string;
+  }
 }
 
 export default function PostPage(props: PostProps) {
+  if (props.error)
+    return <div style={{ color: 'red' }}>
+      { props.error.message }
+    </div>
+
   return <div>
     { props.post?.title }
   </div>
@@ -32,8 +40,13 @@ export const getServerSideProps: GetServerSideProps<PostProps, Params> = async (
       }
     };
   } catch (error) {
+    console.log(error.response.data);
     return {
-      props : {}
+      props : {
+        error: {
+          message: error.response.data.detail || error.message
+        }
+      }
     }
   }
 }
