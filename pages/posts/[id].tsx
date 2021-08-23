@@ -32,12 +32,12 @@ export const getServerSideProps: GetServerSideProps<PostProps, Params> = async (
       }
     };
   } catch (error) {
-    console.log(error.response);
+    console.log(error);
     return {
       props : {
         error: {
-          message: error.response.data?.detail || error.message,
-          statusCode: error.response.data?.status || 500,
+          message: error.message,
+          statusCode: error.data?.status || 500,
         }
       }
     }
