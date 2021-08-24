@@ -2,6 +2,7 @@ import Link from "next/link";
 import { transparentize } from "polished";
 import { Post } from "rodolfohiok-sdk";
 import styled from "styled-components"
+import formatPostDate from "../core/utils/formatPostDate";
 import Avatar from "./Avatar";
 
 
@@ -23,7 +24,7 @@ export default function FeaturedPost(props: FeaturedPostProps) {
             <Avatar src={props.postSummary.editor.avatarUrls.small}/>
             <EditorDescription>
               <EditorName>por {props.postSummary.editor.name}</EditorName>
-              <PostDate>{props.postSummary.createdAt}</PostDate>
+              <PostDate>{formatPostDate(props.postSummary.createdAt)}</PostDate>
             </EditorDescription>
           </Editor>
           <Title>{props.postSummary.title}</Title>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { transparentize } from "polished";
 import { User } from "rodolfohiok-sdk";
 import styled from "styled-components";
+import formatPostDate from "../core/utils/formatPostDate";
 
 interface PostHeaderProps {
   thumbnail: string;
@@ -17,7 +18,7 @@ export default function PostHeader(props: PostHeaderProps) {
       <EditorImage src={props.editor.avatarUrls.small} width={64} height={64}/>
     </Editor>
     <PublishDate>
-      {props.createAt}
+      {formatPostDate(props.createAt)}
     </PublishDate>
     <Title>
       {props.title}

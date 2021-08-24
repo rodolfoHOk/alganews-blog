@@ -3,6 +3,7 @@ import Link from "next/link";
 import { transparentize } from "polished";
 import { Post } from "rodolfohiok-sdk";
 import styled from "styled-components";
+import formatPostDate from "../core/utils/formatPostDate";
 
 interface PostCardProps {
   post: Post.Summary;
@@ -19,7 +20,7 @@ export default function PostCard(props: PostCardProps) {
             <EditorImage src={post.editor.avatarUrls.small} width={64} height={64}/>
           </Editor>
           <PublishDate>
-            {post.createdAt}
+            {formatPostDate(post.createdAt)}
           </PublishDate>
           <Title>
             {post.title}
