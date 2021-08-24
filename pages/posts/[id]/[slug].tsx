@@ -1,16 +1,26 @@
 import { GetServerSideProps } from "next";
+import Head from "next/head";
 import { ParsedUrlQuery } from 'querystring';
 import { Post, PostService } from "rodolfohiok-sdk";
 import { ResourceNotFoundError } from "rodolfohiok-sdk/dist/errors";
 
 interface PostProps extends NextPageProps{
   post?: Post.Detailed;
+  host?: string;
 }
 
 export default function PostPage(props: PostProps) {
-  return <div>
-    { props.post?.title }
-  </div>
+  return <>
+    <Head>
+      <link 
+        rel="canonical" 
+        href={`${props.host}/posts/${props.post?.id}/${props.post?.slug}`} 
+      />
+    </Head>
+    <div>
+      { props.post?.title }
+    </div>
+  </>
 }
 
 interface Params extends ParsedUrlQuery{
@@ -19,32 +29,26 @@ interface Params extends ParsedUrlQuery{
 }
 
 export const getServerSideProps: GetServerSideProps<PostProps, Params> = 
-async ({ params, res }) => {
+async ({ params, req }) => {
   try {
     if (!params) return { notFound: true };
 
-    const { id, slug } = params;
+    const { id } = params;
     const postId = Number(id);
     if (isNaN(postId)) return { notFound: true };
   
     const post = await PostService.getExistingPost(postId);
-
-    if (slug !== post.slug) {
-      res.statusCode = 301;
-      res.setHeader('Location', `/posts/${post.id}/${post.slug}`);
-      return {
-        props: {}
-      }
-    }
-  
+ 
     return {
       props: {
-        post
+        post,
+        host: req.headers.host
       }
     };
   } catch (error) {
     if (error instanceof ResourceNotFoundError)
       return { notFound: true };
+    
     return {
       props : {
         error: {
