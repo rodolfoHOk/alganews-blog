@@ -15,14 +15,14 @@ export default function PostPage(props: PostProps) {
 }
 
 interface Params extends ParsedUrlQuery{
-  id: string;
+  pid: string[];
 }
 
 export const getServerSideProps: GetServerSideProps<PostProps, Params> = async ({ params }) => {
   try {
     if (!params) return { notFound: true };
-  
-    const { id } = params;
+
+    const [id, slug] = params.pid;
     const postId = Number(id);
     if (isNaN(postId)) return { notFound: true };
   
@@ -34,14 +34,8 @@ export const getServerSideProps: GetServerSideProps<PostProps, Params> = async (
       }
     };
   } catch (error) {
-    if (error instanceof CustomError)
-      console.log('Error: CustomError');
-    if (error instanceof ResourceNotFoundError) {
-      console.log('Error: ResourceNotFoundError');
+    if (error instanceof ResourceNotFoundError)
       return { notFound: true };
-    }
-    if (error instanceof InvalidDataError)
-      console.log('Error: InvalidDataError');
     return {
       props : {
         error: {
