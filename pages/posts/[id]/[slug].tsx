@@ -3,6 +3,7 @@ import Head from "next/head";
 import { ParsedUrlQuery } from 'querystring';
 import { Post, PostService } from "rodolfohiok-sdk";
 import { ResourceNotFoundError } from "rodolfohiok-sdk/dist/errors";
+import Markdown from "../../../components/Markdown";
 import PostHeader from "../../../components/PostHeader";
 
 interface PostProps extends NextPageProps{
@@ -22,12 +23,17 @@ export default function PostPage(props: PostProps) {
     <div>
       {
         post && (
-          <PostHeader 
-            thumbnail={post?.imageUrls.large}
-            editor={post?.editor}
-            createAt={post?.createdAt}
-            title={post?.title}
-          />
+          <>
+            <PostHeader 
+              thumbnail={post?.imageUrls.large}
+              editor={post?.editor}
+              createAt={post?.createdAt}
+              title={post?.title}
+            />
+            <Markdown>
+              { post.body }
+            </Markdown>
+          </>
         )
       }
     </div>
