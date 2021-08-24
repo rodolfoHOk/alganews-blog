@@ -35,3 +35,7 @@ SGV Playground - https://react-svgr.com/playground/
 ## SVG not found
 Credits:
 storyset - https://storyset.com/
+
+## react-markdown
+É uma abstração do remarkjs. plugins do remark funcionam no react-markdown.
+Utilizamos o plugin gfm (github flavored markdown spec) que é um superset do CommonMark spec.

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import gfm from 'remark-gfm';
 
 
 interface MarkdownProps {
@@ -14,7 +15,7 @@ export default function Markdown(props: MarkdownProps) {
     .then(text => setBody(text));
   },[]);
 
-  return <ReactMarkdown className="MarkdownRenderer">
+  return <ReactMarkdown className="MarkdownRenderer" plugins={[gfm]}>
     { body }
     {/* { props.children } */}
   </ReactMarkdown>
