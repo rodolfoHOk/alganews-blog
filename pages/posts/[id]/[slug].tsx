@@ -3,6 +3,7 @@ import Head from "next/head";
 import { ParsedUrlQuery } from 'querystring';
 import { Post, PostService } from "rodolfohiok-sdk";
 import { ResourceNotFoundError } from "rodolfohiok-sdk/dist/errors";
+import PostHeader from "../../../components/PostHeader";
 
 interface PostProps extends NextPageProps{
   post?: Post.Detailed;
@@ -10,15 +11,25 @@ interface PostProps extends NextPageProps{
 }
 
 export default function PostPage(props: PostProps) {
+  const { post } = props;
   return <>
     <Head>
       <link 
         rel="canonical" 
-        href={`${props.host}/posts/${props.post?.id}/${props.post?.slug}`} 
+        href={`${props.host}/posts/${post?.id}/${post?.slug}`} 
       />
     </Head>
     <div>
-      { props.post?.title }
+      {
+        post && (
+          <PostHeader 
+            thumbnail={post?.imageUrls.large}
+            editor={post?.editor}
+            createAt={post?.createdAt}
+            title={post?.title}
+          />
+        )
+      }
     </div>
   </>
 }
