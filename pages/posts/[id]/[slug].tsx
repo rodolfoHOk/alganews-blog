@@ -5,6 +5,7 @@ import { Post, PostService } from "rodolfohiok-sdk";
 import { ResourceNotFoundError } from "rodolfohiok-sdk/dist/errors";
 import Markdown from "../../../components/Markdown";
 import PostHeader from "../../../components/PostHeader";
+import { DiscussionEmbed } from 'disqus-react';
 
 interface PostProps extends NextPageProps{
   post?: Post.Detailed;
@@ -40,6 +41,15 @@ export default function PostPage(props: PostProps) {
             <Markdown>
               { post.body }
             </Markdown>
+            <DiscussionEmbed
+              shortname='alganews' // não funcionou com meu próprio
+              config={{
+                url: `${props.host}/posts/${post?.id}/${post?.slug}`,
+                identifier: String(post.id),
+                title: post.title,
+                language: 'pt_BR'
+              }}
+            />
           </>
         )
       }
