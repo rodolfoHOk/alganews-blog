@@ -14,6 +14,11 @@ export default function Header() {
 }
 
 const Wrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
   background-color: ${p => p.theme.activeElementBackground};
   color: ${p => p.theme.activeElementForeground};
   box-shadow: 0 3px 10px ${p => transparentize(0.9, p.theme.pageForeground)};
