@@ -37,5 +37,12 @@ Credits:
 storyset - https://storyset.com/
 
 ## react-markdown
-É uma abstração do remarkjs. plugins do remark funcionam no react-markdown.
+É uma abstração do remarkjs. Plugins do remark funcionam no react-markdown.
 Utilizamos o plugin gfm (github flavored markdown spec) que é um superset do CommonMark spec.
+
+## open graph
+Credits:
+open graph generator: https://smallseotools.com/open-graph-generator/
+
+## Social Share Preview
+Extensão do Chrome ou Firefox para visualizar o open graph.
