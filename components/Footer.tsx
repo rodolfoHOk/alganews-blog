@@ -1,6 +1,6 @@
 import { transparentize } from "polished";
 import styled from "styled-components";
-import { FOOTER_HEIGHT } from "../_constants";
+import { FOOTER_HEIGHT, MOBILE_FOOTER_HEIGHT } from "../_constants";
 import Logo from "./Logo";
 
 export default function Footer() {
@@ -18,6 +18,10 @@ const Wrapper = styled.footer`
 
   width: 100%;
   height: ${FOOTER_HEIGHT}px;
+
+  @media screen and (max-width: 767px) {
+    height: ${MOBILE_FOOTER_HEIGHT}px;
+  }
 `;
 
 const Container = styled.div`
