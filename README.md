@@ -56,7 +56,7 @@ storyset - https://storyset.com/
 open graph generator: https://smallseotools.com/open-graph-generator/
 obs: Social Share Preview - Extensão do Chrome ou Firefox para visualizar o open graph.
 
-## BackEnd Local
+## Back-End Local
 
 Para executar o back-end localmente utilizamos containers do docker.
 
