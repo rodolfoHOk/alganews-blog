@@ -32,9 +32,9 @@
   e as classes de erros utilizadas no projeto.
 - styled-components: estilização dos componentes do React JS
 
-#### react-markdown:
+#### obs react-markdown:
 
-obs: É uma abstração do remarkjs. Plugins do remark funcionam no react-markdown.
+É uma abstração do remarkjs. Plugins do remark funcionam no react-markdown.
 Utilizamos o plugin gfm (github flavored markdown spec) que é um superset do CommonMark spec.
 
 ## Outras imagens
