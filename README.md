@@ -59,8 +59,10 @@ obs: Social Share Preview - Extensão do Chrome ou Firefox para visualizar o ope
 ## BackEnd Local
 
 Para executar o back-end localmente utilizamos containers do docker.
+
 Localização:
 /repositorio/Programacao/cursos/algaworks/ERJS-EspecialistaReactJS/alganews-infra/
+
 Comando de execução:
 docker-compose up -d
 
