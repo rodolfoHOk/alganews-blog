@@ -54,6 +54,7 @@ storyset - https://storyset.com/
 ### open graph:
 
 open graph generator: https://smallseotools.com/open-graph-generator/
+
 obs: Social Share Preview - Extensão do Chrome ou Firefox para visualizar o open graph.
 
 ## Back-End Local
