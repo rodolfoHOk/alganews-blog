@@ -3,10 +3,18 @@
 > Este é um dos 3 projetos interligados do curso Especialista React JS da AlgaWorks
 
 > O projeto geral segue o briefing:
-> https://www.notion.so/Documentos-8dca4ded101d42478b6bc2f2c7a0fb46
+
+    https://www.notion.so/Documentos-8dca4ded101d42478b6bc2f2c7a0fb46
 
 > O projeto do blog segue o briefing:
-> https://www.notion.so/Briefing-Blog-256d9f6ae1c24fbfb73e095b3c665de4
+
+    https://www.notion.so/Briefing-Blog-256d9f6ae1c24fbfb73e095b3c665de4
+
+> Links dos projetos do curso
+
+    - [AlgaNews Admin](https://github.com/rodolfoHOk/alganews-admin)
+    - [AlgaNews Blog](https://github.com/rodolfoHOk/alganews-blog)
+    - [AlgaNews CMS](https://github.com/rodolfoHOk/alganews-cms)
 
 <img src="https://raw.githubusercontent.com/rodolfoHOk/portfolio-img/main/images/alganews-blog-1.png" alt="AlgaNews Blog Img1" width="450"/>
 
