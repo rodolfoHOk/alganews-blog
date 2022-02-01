@@ -12,9 +12,9 @@
 
 > Links dos projetos do curso
 
-- [AlgaNews Admin](https://github.com/rodolfoHOk/alganews-admin)
-- [AlgaNews Blog](https://github.com/rodolfoHOk/alganews-blog)
-- [AlgaNews CMS](https://github.com/rodolfoHOk/alganews-cms)
+[AlgaNews Admin](https://github.com/rodolfoHOk/alganews-admin)
+[AlgaNews Blog](https://github.com/rodolfoHOk/alganews-blog)
+[AlgaNews CMS](https://github.com/rodolfoHOk/alganews-cms)
 
 <img src="https://raw.githubusercontent.com/rodolfoHOk/portfolio-img/main/images/alganews-blog-1.png" alt="AlgaNews Blog Img1" width="450"/>
 
