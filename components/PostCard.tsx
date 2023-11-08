@@ -12,19 +12,20 @@ interface PostCardProps {
 export default function PostCard(props: PostCardProps) {
   const { post } = props;
   return (
-    <Link href={`/posts/${post.id}/${post.slug}`} passHref>
+    <Link legacyBehavior href={`/posts/${post.id}/${post.slug}`} passHref>
       <Wrapper>
-        <Thumbnail bg={post.imageUrls.small}/>
+        <Thumbnail bg={post.imageUrls.small} />
         <Info>
           <Editor>
-            <EditorImage src={post.editor.avatarUrls.small} width={64} height={64}/>
+            <EditorImage
+              src={post.editor.avatarUrls.small}
+              width={64}
+              height={64}
+              alt={post.editor.name}
+            />
           </Editor>
-          <PublishDate>
-            {formatPostDate(post.createdAt)}
-          </PublishDate>
-          <Title>
-            {post.title}
-          </Title>
+          <PublishDate>{formatPostDate(post.createdAt)}</PublishDate>
+          <Title>{post.title}</Title>
         </Info>
       </Wrapper>
     </Link>
@@ -38,38 +39,40 @@ const Thumbnail = styled.div<{ bg: string }>`
   width: 100%;
   height: 50%;
 
-  background-image: url(${p => p.bg});
+  background-image: url(${(p) => p.bg});
   background-position: center;
   background-size: cover;
 
-  border-top-left-radius: ${p => p.theme.borderRadius};
-  border-top-right-radius: ${p => p.theme.borderRadius};
+  border-top-left-radius: ${(p) => p.theme.borderRadius};
+  border-top-right-radius: ${(p) => p.theme.borderRadius};
 `;
 
 const Wrapper = styled.a`
-  background-color: ${p => p.theme.activeElementBackground};
-  color: ${p => p.theme.activeElementForeground};
-  border-radius: ${p => p.theme.borderRadius};
-  box-shadow: 0 3px 6px ${p => transparentize(0.9, p.theme.activeElementForeground)};
+  background-color: ${(p) => p.theme.activeElementBackground};
+  color: ${(p) => p.theme.activeElementForeground};
+  border-radius: ${(p) => p.theme.borderRadius};
+  box-shadow: 0 3px 6px
+    ${(p) => transparentize(0.9, p.theme.activeElementForeground)};
   outline: none;
 
   position: relative;
   min-height: 256px;
 
-  transition: .25s ease;
+  transition: 0.25s ease;
 
   * {
-    transition: .25s ease;
+    transition: 0.25s ease;
   }
 
   &:hover,
   &:focus {
-    background-color: ${p => p.theme.primaryBackground};
-    box-shadow: 0 0 0 4px ${p => transparentize(0.7, p.theme.primaryBackground)};
+    background-color: ${(p) => p.theme.primaryBackground};
+    box-shadow: 0 0 0 4px
+      ${(p) => transparentize(0.7, p.theme.primaryBackground)};
     cursor: pointer;
 
     * {
-      color: ${p => p.theme.primaryForeground};
+      color: ${(p) => p.theme.primaryForeground};
     }
 
     ${Thumbnail} {
@@ -100,9 +103,9 @@ const Editor = styled.div`
   z-index: 2;
   width: 64px;
   height: 64px;
-  
+
   border-radius: 32px;
-  box-shadow: 0 0 0 4px ${p => p.theme.activeElementBackground};
+  box-shadow: 0 0 0 4px ${(p) => p.theme.activeElementBackground};
 `;
 
 const EditorImage = styled(Image)`
@@ -112,7 +115,7 @@ const EditorImage = styled(Image)`
 `;
 
 const PublishDate = styled.p`
-  color: ${p => transparentize(0.5, p.theme.activeElementForeground)};
+  color: ${(p) => transparentize(0.5, p.theme.activeElementForeground)};
   font-size: 12px;
 `;
 

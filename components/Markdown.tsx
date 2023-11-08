@@ -1,28 +1,27 @@
-import ReactMarkdown, { Components } from 'react-markdown';
-import gfm from 'remark-gfm';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { okaidia } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-
+import ReactMarkdown, { Components } from "react-markdown";
+import gfm from "remark-gfm";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { okaidia } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 const components: Components = {
-  code({ node, inline, className, children, ...props }) {
+  code(props) {
+    const { children, className, node, ...rest } = props;
     const match = /language-(\w+)/.exec(className || "");
-    return !inline && match ? (
-      //@ts-ignore // Type 'LegacyRef<HTMLElement> | undefined' is not assignable to type 'LegacyRef<SyntaxHighlighter> | undefined'
+    return match ? (
+      // @ts-ignore
       <SyntaxHighlighter
-        style={okaidia}
-        language={match[1]}
+        {...rest}
         PreTag="div"
-        {...props}
-      >
-        {String(children).replace(/\n$/, "")}
-      </SyntaxHighlighter>
+        children={String(children).replace(/\n$/, "")}
+        language={match[1]}
+        style={okaidia}
+      />
     ) : (
-      <code className={className} {...props}>
+      <code {...rest} className={className}>
         {children}
       </code>
     );
-  }
+  },
 };
 
 interface MarkdownProps {
@@ -33,7 +32,7 @@ export default function Markdown(props: MarkdownProps) {
   return (
     <ReactMarkdown
       className={"MarkdownRenderer"}
-      plugins={[gfm]}
+      remarkPlugins={[gfm]}
       components={components}
     >
       {props.children}

@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { transparentize } from "polished";
 import { Post } from "rodolfohiok-sdk";
-import styled from "styled-components"
+import styled from "styled-components";
 import formatPostDate from "../core/utils/formatPostDate";
 import Avatar from "./Avatar";
-
 
 interface FeaturedPostProps {
   postSummary: Post.Summary;
@@ -13,15 +12,17 @@ interface FeaturedPostProps {
 export default function FeaturedPost(props: FeaturedPostProps) {
   const { id, slug } = props.postSummary;
   return (
-    <Link href={`/posts/${id}/${slug}`} passHref>
+    <Link legacyBehavior href={`/posts/${id}/${slug}`} passHref>
       <Wrapper>
-        <BgImage bg={props.postSummary.imageUrls.medium}/>
+        <BgImage bg={props.postSummary.imageUrls.medium} />
         <Content>
           <Tags>
-            {props.postSummary.tags.map(tag => <Tag key={tag}>{tag}</Tag>)}
+            {props.postSummary.tags.map((tag) => (
+              <Tag key={tag}>{tag}</Tag>
+            ))}
           </Tags>
           <Editor>
-            <Avatar src={props.postSummary.editor.avatarUrls.small}/>
+            <Avatar src={props.postSummary.editor.avatarUrls.small} />
             <EditorDescription>
               <EditorName>por {props.postSummary.editor.name}</EditorName>
               <PostDate>{formatPostDate(props.postSummary.createdAt)}</PostDate>
@@ -40,9 +41,9 @@ const Wrapper = styled.a`
   display: flex;
   align-items: center;
 
-  background-color: ${p => p.theme.primaryBackground};
-  color: ${p => p.theme.primaryForeground};
-  border-radius: ${p => p.theme.borderRadius};
+  background-color: ${(p) => p.theme.primaryBackground};
+  color: ${(p) => p.theme.primaryForeground};
+  border-radius: ${(p) => p.theme.borderRadius};
 
   width: 100%;
   min-height: 256px;
@@ -57,7 +58,8 @@ const Wrapper = styled.a`
   &:hover,
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 4px ${p => transparentize(0.7, p.theme.primaryBackground)};
+    box-shadow: 0 0 0 4px
+      ${(p) => transparentize(0.7, p.theme.primaryBackground)};
   }
 `;
 
@@ -65,7 +67,7 @@ const BgImage = styled.div<{ bg: string }>`
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image: url(${p => p.bg});
+  background-image: url(${(p) => p.bg});
   opacity: 0.05;
 `;
 
@@ -90,9 +92,9 @@ const Tags = styled.ul`
 `;
 
 const Tag = styled.li`
-  background-color: ${p => p.theme.activeElementBackground};
-  color: ${p => p.theme.activeElementForeground};
-  border-radius: ${p => p.theme.borderRadius};
+  background-color: ${(p) => p.theme.activeElementBackground};
+  color: ${(p) => p.theme.activeElementForeground};
+  border-radius: ${(p) => p.theme.borderRadius};
 
   padding: 4px 8px;
   font-size: 12px;

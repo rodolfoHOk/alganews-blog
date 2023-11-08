@@ -12,18 +12,21 @@ interface PostHeaderProps {
 }
 
 export default function PostHeader(props: PostHeaderProps) {
-  return <Wrapper>
-    <Thumbnail bg={props.thumbnail}/>
-    <Editor>
-      <EditorImage src={props.editor.avatarUrls.small} width={64} height={64}/>
-    </Editor>
-    <PublishDate>
-      {formatPostDate(props.createAt)}
-    </PublishDate>
-    <Title>
-      {props.title}
-    </Title>
-  </Wrapper>
+  return (
+    <Wrapper>
+      <Thumbnail bg={props.thumbnail} />
+      <Editor>
+        <EditorImage
+          src={props.editor.avatarUrls.small}
+          width={64}
+          height={64}
+          alt={props.editor.name}
+        />
+      </Editor>
+      <PublishDate>{formatPostDate(props.createAt)}</PublishDate>
+      <Title>{props.title}</Title>
+    </Wrapper>
+  );
 }
 
 const Wrapper = styled.div`
@@ -37,16 +40,16 @@ const Wrapper = styled.div`
   height: 428px;
 `;
 
-const Thumbnail = styled.div<{ bg: string}>`
+const Thumbnail = styled.div<{ bg: string }>`
   width: 100%;
   height: 256px;
 
-  background-image: url(${p => p.bg});
+  background-image: url(${(p) => p.bg});
   background-position: center;
   background-size: cover;
 
-  border-top-left-radius: ${p => p.theme.borderRadius};
-  border-top-right-radius: ${p => p.theme.borderRadius};
+  border-top-left-radius: ${(p) => p.theme.borderRadius};
+  border-top-right-radius: ${(p) => p.theme.borderRadius};
 `;
 
 const Editor = styled.div`
@@ -55,7 +58,7 @@ const Editor = styled.div`
   margin-top: -48px;
 
   border-radius: 32px;
-  box-shadow: 0 0 0 4px ${p => p.theme.primaryForeground};
+  box-shadow: 0 0 0 4px ${(p) => p.theme.primaryForeground};
 `;
 
 const EditorImage = styled(Image)`
@@ -67,7 +70,7 @@ const EditorImage = styled(Image)`
 const PublishDate = styled.p`
   margin-top: 8px;
   font-size: 12px;
-  color: ${p => transparentize(0.5, p.theme.pageForeground)};
+  color: ${(p) => transparentize(0.5, p.theme.pageForeground)};
 `;
 
 const Title = styled.h2`

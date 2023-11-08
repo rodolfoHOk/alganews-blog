@@ -1,24 +1,30 @@
-import styled from "styled-components"
+import styled from "styled-components";
 import { FOOTER_HEIGHT, HEADER_HEIGHT } from "../_constants";
-import ServerErrorImage from '../public/server_error.svg';
+import ServerErrorImage from "../public/server_error.svg";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 
 export default function ServerError() {
-  return <Wrapper>
-    <Head>
-      <title>Erro interno - 500</title>
-    </Head>
-    <Image src={ServerErrorImage} alt="não encontrado" width={200} height={200} objectFit="contain" />
-    <h1>Erro interno</h1>
-    <p>O estagiário desconectou um cabo errado...</p>
-    <Link href="/" passHref>
-      <BackToHome>
-        Tentar acessar a Home
-      </BackToHome>
-    </Link>
-  </Wrapper>
+  return (
+    <Wrapper>
+      <Head>
+        <title>Erro interno - 500</title>
+      </Head>
+      <Image
+        src={ServerErrorImage}
+        alt="não encontrado"
+        width={200}
+        height={200}
+        objectFit="contain"
+      />
+      <h1>Erro interno</h1>
+      <p>O estagiário desconectou um cabo errado...</p>
+      <Link legacyBehavior href="/" passHref>
+        <BackToHome>Tentar acessar a Home</BackToHome>
+      </Link>
+    </Wrapper>
+  );
 }
 
 const Wrapper = styled.div`
@@ -32,6 +38,6 @@ const Wrapper = styled.div`
 `;
 
 const BackToHome = styled.a`
-  color: ${p => p.theme.primaryBackground};
+  color: ${(p) => p.theme.primaryBackground};
   text-decoration: none;
 `;
